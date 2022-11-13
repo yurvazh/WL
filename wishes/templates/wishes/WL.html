@@ -1,0 +1,9 @@
+{% if wl %}
+    <ul>
+        {% for b in wl %}
+            <li><a href="/wishes/presents/{{b.id}}">{{b.title}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>There is no presents in this wishlist.</p>
+{% endif %}

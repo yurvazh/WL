@@ -11,7 +11,8 @@ from .models import Present
 # Create your views here.
 
 def index(request):
-    return HttpResponse("hello")
+    template = loader.get_template('wishes/index.html')
+    return HttpResponse(template.render())
 
 class PresentsView (ListView):
     model = Present
@@ -21,5 +22,15 @@ class PresentDetailView (DetailView):
     model = Present
     template_name = 'wishes/present_details.html'
 
-def index1(request):
-    return HttpResponse("тимофей пропиши delete")
+def show_wishlist (request, us_id):
+    all_wishes = Present.objects.all()
+    wishes_by_id = []
+    for pr in all_wishes:
+        if (pr.creator == us_id):
+            wishes_by_id.append(pr)
+    context = {
+        "WL" : wishes_by_id
+    }
+    return render(request, 'wishes/Wl.html', {"wl" : wishes_by_id})
+
+

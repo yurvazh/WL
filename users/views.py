@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 
 
@@ -9,4 +10,8 @@ class SignUpView (CreateView):
     form_class = UserCreationForm
     success_url = '/auth/login/'
     template_name = "users/signup.html"
+
+class UserListView (ListView):
+    model = User
+    template_name = "users/wishlists.html"
 

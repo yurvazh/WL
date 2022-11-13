@@ -1,0 +1,5 @@
+{% for user in object_list %}
+    <li>
+        {{ user }} : <a href = "/wishes/wishlist/{{user.id}}">wishlist</a>
+    </li>
+{% endfor %}
