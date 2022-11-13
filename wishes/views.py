@@ -16,3 +16,10 @@ def index(request):
 class PresentsView (ListView):
     model = Present
     template_name = "wishes/all_presents.html"
+
+class PresentDetailView (DetailView):
+    model = Present
+    template_name = 'wishes/present_details.html'
+
+def index1(request):
+    return HttpResponse("тимофей пропиши delete")

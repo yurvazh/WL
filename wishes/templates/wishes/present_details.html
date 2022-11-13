@@ -1,0 +1,15 @@
+{% load static %}
+
+<h1>{{ present.title }}</h1>
+
+{% if user.is_authenticated %}
+    {% if user.id == present.creator %}
+        <p>
+            <a href="/wishes/presents/{{present.id}}/delete">Remove from wishlist</a>
+        </p>
+    {% else %}
+        <p>
+            <a href="/wishes/presents/{{present.id}}/delete">Reserve present</a>
+        </p>
+    {% endif %}
+{% endif %}

@@ -1,9 +1,8 @@
-{% if user.id == 1 %}
-    {% for Present in object_list %}
-        <li>
-            {{ Present }}
-        </li>
-    {% empty %}
-        No presents.
-    {% endfor %}
-{% endif %}
+
+{% for Present in object_list %}
+    <li>
+        {{ Present }}
+    </li>
+{% empty %}
+    No presents.
+{% endfor %}
