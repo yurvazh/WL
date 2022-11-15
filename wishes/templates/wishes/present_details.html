@@ -5,6 +5,9 @@
 {% if user.is_authenticated %}
     {% if user.id == present.creator or present.creator == 0%}
         <p>
+            <a href="/wishes/presents/{{present.id}}/update">Change</a>
+        </p>
+        <p>
             <a href="/wishes/presents/{{present.id}}/delete">Delete present</a>
         </p>
     {% else %}
