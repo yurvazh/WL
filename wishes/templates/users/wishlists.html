@@ -1,5 +1,35 @@
-{% for user in object_list %}
-    <li>
-        {{ user }} : <a href = "/wishes/wishlist/{{user.id}}">wishlist</a>
-    </li>
-{% endfor %}
+{% if user.is_authenticated %}
+    Hi, {{user.username}}
+{% else %}
+    <a href="/auth/login">Log in</a>
+    <br>
+    <a href="/auth/signup">Sign up</a>
+{% endif %}
+<br><br>
+
+
+
+{% if user.is_authenticated %}
+    <p>
+        <a href="/wishes/wishlist/{{user.id}}">My wishlist</a>
+    </p>
+    {% for us in object_list %}
+
+        {% if us.id != user.id %}
+            {{ us }} : <a href = "/wishes/wishlist/{{us.id}}">wishlist</a>
+        {% endif %}<br>
+    {% endfor %}
+{% else %}
+
+    {% for user in object_list %}
+        <li>
+            {{ user }} : <a href = "/wishes/wishlist/{{user.id}}">wishlist</a>
+        </li>
+    {% endfor %}
+
+{% endif %}
+
+<br><br>
+{% if user.is_authenticated %}
+    <a href="/auth/logout">Log out</a>
+{% endif %}

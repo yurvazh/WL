@@ -1,9 +1,31 @@
+<style>
+   a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+   }
+</style>
+
+
 {% if wl %}
     <ul>
         {% for b in wl %}
-            <li><a href="/wishes/presents/{{b.id}}">{{b.title}}</a></li>
+            <li><a href="/wishes/presents/{{b.id}}">{{b.title}}</a>
+                {% if b.reserved %}
+                    <img src="https://play-lh.googleusercontent.com/N7p1LUZQj1Zrth7Jmn6tMlogB8JYv-ozxxJC-Qwq_NIqBluDSUj0Mt8BeBphM0rX9A" width="14" height=14">
+                {% else %}
+                    <img src="https://vsememy.ru/wp-content/uploads/2022/07/c71f1c054d5ae4d982d3a95eb12522a6.jpg" width="14" height="14">
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 {% else %}
     <p>There is no presents in this wishlist.</p>
+{% endif %}
+
+
+{% if user.is_authenticated %}
+    {% if user.id == uid %}
+        <p>
+            <a href="/wishes/presents/create">Create new present</a>
+        </p>
+    {% endif %}
 {% endif %}

@@ -3,13 +3,19 @@
 <h1>{{ present.title }}</h1>
 
 {% if user.is_authenticated %}
-    {% if user.id == present.creator %}
+    {% if user.id == present.creator or present.creator == 0%}
         <p>
-            <a href="/wishes/presents/{{present.id}}/delete">Remove from wishlist</a>
+            <a href="/wishes/presents/{{present.id}}/delete">Delete present</a>
         </p>
     {% else %}
-        <p>
-            <a href="/wishes/presents/{{present.id}}/delete">Reserve present</a>
-        </p>
+        {% if present.reserved %}
+            <p>
+                This present has been reserved.
+            </p>
+        {% else %}
+            <p>
+                <a href="/wishes/presents/{{present.id}}/update">Reserve</a>
+            </p>
+        {% endif %}
     {% endif %}
 {% endif %}
