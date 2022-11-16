@@ -1,0 +1,68 @@
+body{
+    background-color: #ececec;
+}
+
+.top{
+    width: 100%;
+    height: 60px;
+    background-color: lightblue;
+}
+
+.login-button-wrapper{
+    display: flex;  
+    justify-content: center;
+}
+
+.login-button{
+    margin-top: 20px;
+    background-color: #ffcc00;
+    border: none;
+    color: black;
+    width:  50%;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.login-form{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: inline-block;
+    position: absolute;
+    left:  10%;
+    top: 10%;
+    background-color: white;
+    width: 80%;
+    height:  80%;
+}
+
+.login-text{
+    margin-top:  100px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.login-fields{
+    margin-top:  60px;
+    text-align:  center;
+}
+
+.text-in-button{
+    font-weight: bolder;
+    margin-top:  10px;
+    font-size:  20px;
+}
+
+#id_username{
+    width: 43%;
+    broder: 0;
+    height: 50px;
+}
+
+#id_password{
+    margin-top: 20px;
+    width:  43%;
+    outline: none;
+    height: 50px;
+}
