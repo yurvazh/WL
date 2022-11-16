@@ -7,15 +7,14 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head> 
     <body>
-        <div class="top"></div>
         <div class="form">
-            <h2 id="chiga">Log in</h2>
             <div class="login-form">
-                <form method='post'>
+                <h2 class="Login-text">Please Sign In</h2>
+                <form method='post' class="login-fields">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div class="login-button-wrapper">
-                        <button type='submit' class="login-button">Log in</button>
+                        <button type='submit' class="login-button"><p class="text-in-button">Log in</p></button>
                     </div>
                 </form>
             </div>
