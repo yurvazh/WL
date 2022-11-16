@@ -1,0 +1,162 @@
+body{
+    background-color: #dddddd;
+    justify-content: center;
+}
+
+p{
+	font-size:  30px;
+}
+
+
+.content{
+	width: 80%;
+	margin-left: 10%;
+	position: fixed;
+	display: flex;
+	margin-top: 60px;
+	border: 1px;
+	border-color: black;
+}
+
+.header{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    background-color: black;
+    text-align: right;
+   	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#own_wishlist {
+    text-align:center;
+}
+
+.filler {
+	margin-top: 30px;
+#dddddd}
+
+.wishlist {
+	width:220px; 
+    height:250px; 
+    background: white; 
+    float:left; 
+    margin: 40px 15px 15px 50px; 
+    text-align:center;
+    z-index: 0;
+   	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+   	font-size: 40px;
+    border-radius: 15px;
+    cursor: pointer;
+}	
+
+.wishlist:active {
+	transform: 	translate(1px, 1px);
+
+   	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+#username {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.additional_information{
+	font-size: 30px;
+	color: lightblue;
+	margin-bottom: 30%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	high:  60px;
+	margin-bottom: 30px;
+}
+
+.header_username{
+	font-size: 20px;
+	margin-top: 20px;
+	text-align:  right;
+	float: left;
+	margin-left: 10px;
+	color: white;
+}
+
+.logout_button{
+	font-size: 20px;
+	margin-top: 20px;
+	text-align:  right;
+	float: right;
+	margin-right: 10px;
+	color: lightgrey;
+}
+
+
+ .footer{
+ 	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	high:  60px;
+	background-color: #343a40;
+	color: white;
+	text-align: center;
+	margin-top: 100%;
+ }
+
+#logout-button{
+	color: #ffcc00;
+}
+
+a { 
+	color: white;
+    text-decoration: none;
+ } 
+
+.navigation {
+  width: 100%;
+  background-color: #ffcc00;
+}
+
+
+.logout {
+  	font-size: 10px;
+  	font-family: 'Oswald', sans-serif;
+	position: relative;
+  	right: 0px;
+  	bottom: -8px;
+  	overflow: hidden;
+  	opacity: 0;
+  	transition: opacity .45s;
+  	-webkit-transition: opacity .35s;
+  
+}
+
+.button {
+	text-decoration: none;
+	float: right;
+  	padding: 12px;
+  	margin: 5px;
+  	color: white;
+  	width: 40px;
+  	background-color: #ffcc00;
+  	transition: width .35s;
+  	-webkit-transition: width .35s;
+  	overflow: hidden
+}
+
+a:hover {
+  width: 100px;
+  color: black;
+}
+
+a:hover .logout{
+  opacity: .9;
+  color: black;
+}
+
+img {
+  width: 25px;
+  float: left;
+}
+
