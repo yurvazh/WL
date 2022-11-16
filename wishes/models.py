@@ -11,4 +11,4 @@ class Present(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('index', args=[])
+        return reverse('present_info', args=[self.pk])
