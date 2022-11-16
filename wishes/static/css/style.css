@@ -18,11 +18,11 @@ body{
     background-color: #ffcc00;
     border: none;
     color: black;
-    width:  50%;
+    width:  40%;
     height: 50px;
     text-align: center;
     font-size: 16px;
-
+    border-radius: 15px;
 }
 
 .login-form{
@@ -34,6 +34,7 @@ body{
     background-color: white;
     width: 80%;
     height:  80%;
+    border-radius: 15px;
 }
 
 .login-text{
@@ -55,14 +56,15 @@ body{
 }
 
 #id_username{
-    width: 43%;
-    broder: 0;
+    width: 40%;
     height: 50px;
+    border-radius: 15px;
 }
 
 #id_password{
     margin-top: 20px;
-    width:  43%;
-    outline: none;
+    width:  40%;
     height: 50px;
+    border-radius: 15px;
 }
+
