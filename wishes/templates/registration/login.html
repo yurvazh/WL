@@ -1,6 +1,24 @@
-<h2>Log in</h2>
-<form method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type='submit'>Log in</button>
-</form>
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head> 
+    <body>
+        <div class="top"></div>
+        <div class="form">
+            <h2 id="chiga">Log in</h2>
+            <div class="login-form">
+                <form method='post'>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="login-button-wrapper">
+                        <button type='submit' class="login-button">Log in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
