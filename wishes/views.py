@@ -63,3 +63,7 @@ class PresentDeleteView (DeleteView):
     model = Present
     success_url = '/wishes'
     template_name = "wishes/present_confirm_delete.html"
+
+class UserListView(ListView):
+    model = User
+    template_name = "users/wishlists.html"
