@@ -4,6 +4,12 @@ body{
     background-color: #ececec;
 }
 
+.top{
+    width: 100%;
+    height: 60px;
+    background-color: lightblue;
+}
+
 .login-button-wrapper{
     display: flex;  
     justify-content: center;
