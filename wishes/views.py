@@ -30,7 +30,7 @@ class PresentCreateView (LoginRequiredMixin, CreateView):
     template_name = "wishes/present_create_form.html"
 
     def form_valid(self, form):
-        form.instance.creator = 2
+        form.instance.creator = self.request.user.id
         return super().form_valid(form)
 
 def presentdetailview (request, p_id):
@@ -63,3 +63,7 @@ class PresentDeleteView (DeleteView):
     model = Present
     success_url = '/wishes'
     template_name = "wishes/present_confirm_delete.html"
+
+class UserListView(ListView):
+    model = User
+    template_name = "users/wishlists.html"
