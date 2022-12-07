@@ -8,6 +8,9 @@
     </head> 
     <body>
         <div class="header">
+            <div class="home_page_redirect" onclick="location.href='/wishes/'">
+                <img src="{% static 'img/home_icon.png'%}" id="home">
+            </div>
             {% if user.is_authenticated %}
                 <div class="header_username">
                     <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
