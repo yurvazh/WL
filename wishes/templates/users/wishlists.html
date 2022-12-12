@@ -16,9 +16,16 @@
                     <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
                 </div>
             {% else %}
-                <a href="/auth/login">Log in</a>
-                <br>
-                <a href="/auth/signup">Sign up</a>
+                <div class="navigation">
+
+                    <a class="button" href='/auth/login'>
+
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px;margin-top:-6px">LogIn</div>
+
+                    </a>
+
+                </div>
             {% endif %}
             {% if user.is_authenticated %}
                 
@@ -37,19 +44,18 @@
         <div class="content">
             {% if user.is_authenticated %}
                 {% for us in object_list %}
-
                     {% if us.id != user.id %}
                         <div onclick="location.href = '/wishes/wishlist/{{us.id}}'" class="wishlist" id="other_wishlists">
-                            <div id="username"><p>{{ us }}'s</p></div><div id="username"><p>wishlist</p></div>
+                            <div id="username"><p>{{ us }}`s</p></div><div id="username"><p>wishlist</p></div>
                         </div>
                     {% endif %}
                 {% endfor %}
             {% else %}
                 <div class="filler"></div>
                 {% for user in object_list %}
-                    <li class="wishlists_not_authenticated">
-                        {{ user }} : <a href = "/wishes/wishlist/{{user.id}}">wishlist</a>
-                    </li>
+                    <div onclick="location.href = '/wishes/wishlist/{{user.id}}'" class="wishlist" id="other_wishlists">
+                        <div id="username"><p>{{ user }}`s</p></div><div id="username"><p>wishlist</p></div>
+                    </div>
                 {% endfor %}
 
             {% endif %}

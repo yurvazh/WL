@@ -171,18 +171,6 @@ img {
 	cursor: pointer;
 }
 
-.delete_button_wrapper: active {
-	transform: 	translate(1px, 1px);
-   	box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-
-.reserve_button_wrapper: active {
-	transform: 	translate(1px, 1px);
-   	box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}	
-
-
 #wish_name{
 	color: black;
 	margin-left: 10px;
@@ -222,15 +210,10 @@ img {
     text-align: center;
  }
 
-.create_button_text_wraper{
-	margin-left: auto;
-	margin-right: auto;
-
-}
 
  #create_button_text {
     color: black;
-    margin-bottom: -20px;
+    margin-bottom: 10px;
  }
 
 #home{
@@ -246,4 +229,16 @@ img {
 	margin-top: 20px;
 	z-index: 12;
 	cursor: pointer;
+}
+
+
+.reserve_button_wrapper:active {
+	transform: 	translate(1px, 1px);
+
+   	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.delete_button_wrapper:active {
+	transform: translate(1px, 1px);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }

@@ -1,14 +1,54 @@
-{% if user.is_authenticated %}
-    {% if user.id == object.creator %}
-        <form method="post">{% csrf_token %}
+{% load static %}
 
-        <p>Are you sure you want to delete "{{ object }}"?</p>
 
-         <input type="submit" value="Confirm">
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/present_confirm_delete_style.css' %}">
+    </head> 
+    <body>
+        <div class="header">
+            <div class="home_page_redirect" onclick="location.href='/wishes/'">
+                <img src="{% static 'img/home_icon.png'%}" id="home">
+            </div>
+            {% if user.is_authenticated %}
+                <div class="header_username">
+                    <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
+                </div>
+            {% else %}
+                <div class="navigation">
+                    <a class="button" href='/auth/login'>
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px; margin-top:-6px">LogIn</div>
+                    </a>
+                </div>
+            {% endif %}
+            {% if user.is_authenticated %}
 
-        </form>
-    {% else %}
-        You have no rights to delete this object.
-    {% endif %}
-{% endif %}
+            <div class="navigation">
+              
+                <a class="button" href='/auth/logout'>
+                <img src="{% static 'css/logout_pic.png' %}">
+                <div class="logout" onclick="location.href='/auth/logout'">LOGOUT</div>
 
+                </a>
+              
+            </div>                  
+            {% endif %}
+        </div>
+
+        <div class="delete">
+        <div id="Title">
+            <p>Are you sure you want to delete? </p>
+        </div>
+        {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="confirm_button_wrapper"><input id="confirm_button" class="confirm_button" type="Submit" value="Delete"> </div>
+            </form>
+        {% endif %}
+        </div>
+        <div class="footer">Website developed by {company name}</div>
+    </body>
+</html>

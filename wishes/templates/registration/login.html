@@ -13,15 +13,17 @@
                 <form method='post' class="login-fields">
                     {% csrf_token %}
                     <p>
-                        <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Login">
+                        <input class="username" type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" placeholder="Login">
                     </p>
                     <p>
-                        <input type="password" name="password" autocomplete="current-password" required id="id_password" placeholder="Password">
+                        <input class="password" type="password" name="password" autocomplete="current-password" required id="id_password" placeholder="Password">
                     </p>
                     <div class="login-button-wrapper">
                         <button type='submit' class="login-button"><p class="text-in-button">Log in</p></button>
                     </div>
                 </form>
+                <div style="display: flex; justify-content: center;"> Not registered yet? <a href="/auth/signup">Registration</a> </div>
+
             </div>
         </div>
     </body>
