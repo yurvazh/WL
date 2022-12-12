@@ -1,24 +1,64 @@
 {% load static %}
 
-<h1>{{ present.title }}</h1>
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/present_details_style.css' %}">
+    </head> 
+    <body>
+        <div class="header">
+            <div class="home_page_redirect" onclick="location.href='/wishes/'">
+                <img src="{% static 'img/home_icon.png'%}" id="home">
+            </div>
+            {% if user.is_authenticated %}
+                <div class="header_username">
+                    <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
+                </div>
+            {% else %}
+                <div class="navigation">
+                    <a class="button" href='/auth/login'>
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px; margin-top:-6px">LogIn</div>
+                    </a>
+                </div>
+            {% endif %}
+            {% if user.is_authenticated %}
 
-{% if user.is_authenticated %}
-    {% if user.id == present.creator or present.creator == 0%}
-        <p>
-            <a href="/wishes/presents/{{present.id}}/update">Change</a>
-        </p>
-        <p>
-            <a href="/wishes/presents/{{present.id}}/delete">Delete present</a>
-        </p>
-    {% else %}
-        {% if present.reserved %}
-            <p>
-                This present has been reserved.
-            </p>
-        {% else %}
-            <p>
-                <a href="/wishes/presents/{{present.id}}/update">Reserve</a>
-            </p>
-        {% endif %}
-    {% endif %}
-{% endif %}
+            <div class="navigation">
+              
+                <a class="button" href='/auth/logout'>
+                <img src="{% static 'css/logout_pic.png' %}">
+                <div class="logout" onclick="location.href='/auth/logout'">LOGOUT</div>
+
+                </a>
+              
+            </div>              
+            {% endif %}
+        </div>
+
+        <div class="present_details">
+            <div id="Title">
+                <p style="font-size: 40px">{{ present.title }}</p>
+            </div>
+
+            {% if user.is_authenticated %}
+                {% if user.id == present.creator or present.creator == 0%}
+                    <div class="delete_button_wrapper" onclick='location.href="/wishes/presents/{{present.id}}/delete"'><div id="delete">Delete</div></div>
+                    <div class="change_button_wrapper" onclick='location.href="/wishes/presents/{{present.id}}/update"'><div id="change">Change</div></div>
+
+                {% else %}
+                    {% if present.reserved %}
+                        <div class="Inform">
+                            This present has been reserved.
+                        </div>
+                    {% else %}
+                        <div class="change_button_wrapper" onclick='location.href="/wishes/presents/{{present.id}}/update"'><div id="change">Reserve</div></div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="footer">Website developed by {company name}</div>
+    </body>
+</html>

@@ -16,9 +16,16 @@
                     <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
                 </div>
             {% else %}
-                <a href="/auth/login">Log in</a>
-                <br>
-                <a href="/auth/signup">Sign up</a>
+                <div class="navigation">
+
+                    <a class="button" href='/auth/login'>
+
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px;margin-top:-6px">LogIn</div>
+
+                    </a>
+
+                </div>
             {% endif %}
             {% if user.is_authenticated %}
 
@@ -43,7 +50,11 @@
                             {% if user.id == uid %}
                                 <div class="delete_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/delete"'><div id="delete">delete</div></div>
                             {% else %}
-                                <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">reserve</div></div>
+                                {% if b.reserved %}
+                                    <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">disreserve</div></div>
+                                {% else %}
+                                    <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">reserve</div></div>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </div>
@@ -53,6 +64,7 @@
         {% endif %}
 
 
+
         {% if user.is_authenticated %}
             {% if user.id == uid %}
                 <div class="create_button" onclick='location.href="/wishes/presents/create"'>
@@ -60,7 +72,7 @@
                 </div>
             {% endif %}
         {% endif %}
-        <div class="footer">Website developed by {company name}</div>
         </div>
+        <div class="footer">Website developed by {company name}</div>
     </body>
 </html>

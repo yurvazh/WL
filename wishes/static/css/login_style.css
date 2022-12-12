@@ -57,20 +57,20 @@ body{
     font-size:  20px;
 }
 
-#id_username{
-    width: 40%;
-    height: 50px;
-    border-radius: 15px;
-}
-
-#id_password{
+.password {
     margin-top: 20px;
     width:  40%;
     height: 50px;
     border-radius: 15px;
 }
 
+.username {
+    width: 40%;
+    height: 50px;
+    border-radius: 15px;
+}
+
+
  /*login end */
 
  /*main page start */
- header.
