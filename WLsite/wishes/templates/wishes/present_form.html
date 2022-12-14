@@ -1,0 +1,54 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/present_form_style.css' %}">
+    </head> 
+    <body>
+        <div class="header">
+            <div class="home_page_redirect" onclick="location.href='/wishes/'">
+                <img src="{% static 'img/home_icon.png'%}" id="home">
+            </div>
+            {% if user.is_authenticated %}
+                <div class="header_username">
+                    <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
+                </div>
+            {% else %}
+                <div class="navigation">
+                    <a class="button" href='/auth/login'>
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px; margin-top:-6px">LogIn</div>
+                    </a>
+                </div>
+            {% endif %}
+            {% if user.is_authenticated %}
+
+            <div class="navigation">
+              
+                <a class="button" href='/auth/logout'>
+                <img src="{% static 'css/logout_pic.png' %}">
+                <div class="logout" onclick="location.href='/auth/logout'">LOGOUT</div>
+
+                </a>
+              
+            </div>              
+            {% endif %}
+        </div>
+
+        <div class="reserve_form">
+            <div id="Title">
+                <p style="font-size: 40px">{{ present.title }}</p>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <label for="id_reserved" style="font-size:25px; margin-top: 150px"> Reserved:</label>
+                <input type="checkbox" name="reserved" id="id_reserved" checked style="">
+                <div class="confirm_button_wrapper"><input type="Submit" value="Confirm" class="confirm_button"></div>
+            </form>
+        </div>
+
+        <div class="footer">Website developed by Website developed by Yury Vazhenin and Timofey Avetisov</div>
+    </body>
+</html>

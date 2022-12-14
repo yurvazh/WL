@@ -1,0 +1,82 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/WL_style.css' %}">
+    </head> 
+    <body>
+        <div class="header">
+            <div class="home_page_redirect" onclick="location.href='/wishes/'">
+                <img src="{% static 'img/home_icon.png'%}" id="home">
+            </div>
+            {% if user.is_authenticated %}
+                <div class="header_username">
+                    <a href="/wishes/wishlist/{{user.id}}">{{user.username}}</a>
+                </div>
+            {% else %}
+                <div class="navigation">
+
+                    <a class="button" href='/auth/login'>
+
+                    <img src="{% static 'img/login_icon.png' %}" style="width:35px">
+                    <div class="logout" onclick="location.href='/auth/login'" style="font-size:15px;margin-top:-6px">LogIn</div>
+
+                    </a>
+
+                </div>
+            {% endif %}
+            {% if user.is_authenticated %}
+
+            <div class="navigation">
+              
+                <a class="button" href='/auth/logout'>
+                <img src="{% static 'css/logout_pic.png' %}">
+                <div class="logout" onclick="location.href='/auth/logout'">LOGOUT</div>
+
+                </a>
+              
+            </div>                  
+            {% endif %}
+        </div>
+
+        <div class="all_wishes">
+        {% if wl %}
+                {% for b in wl %}
+                    <div class="wish">
+                        <a href="/wishes/presents/{{b.id}}" id="wish_name">{{b.title}}</a>
+                        {% if user.is_authenticated %}
+                            {% if user.id == uid %}
+                                <div class="delete_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/delete"'><div id="delete">delete</div></div>
+                            {% else %}
+                                    {% if b.reserved %}
+                                        {% if b.reserver == user.id %}
+                                            <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">disreserve</div></div>
+                                        {% else %}
+
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">reserve</div></div>
+                                    {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+        {% else %}
+            <p>There is no presents in this wishlist.</p>
+        {% endif %}
+
+
+
+        {% if user.is_authenticated %}
+            {% if user.id == uid %}
+                <div class="create_button" onclick='location.href="/wishes/presents/create"'>
+                    <div class="create_button_text_wrapper"><a href="/wishes/presents/create" id="create_button_text">Create new present</a></div>
+                </div>
+            {% endif %}
+        {% endif %}
+        </div>
+        <div class="footer">Website developed by Yury Vazhenin and Timofey Avetisov</div>
+    </body>
+</html>
