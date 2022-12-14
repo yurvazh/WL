@@ -50,11 +50,15 @@
                             {% if user.id == uid %}
                                 <div class="delete_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/delete"'><div id="delete">delete</div></div>
                             {% else %}
-                                {% if b.reserved %}
-                                    <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">disreserve</div></div>
-                                {% else %}
-                                    <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">reserve</div></div>
-                                {% endif %}
+                                    {% if b.reserved %}
+                                        {% if b.reserver == user.id %}
+                                            <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">disreserve</div></div>
+                                        {% else %}
+
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="reserve_button_wrapper" onclick='location.href="/wishes/presents/{{b.id}}/update"'><div id="reserve">reserve</div></div>
+                                    {% endif %}
                             {% endif %}
                         {% endif %}
                     </div>
@@ -73,6 +77,6 @@
             {% endif %}
         {% endif %}
         </div>
-        <div class="footer">Website developed by {company name}</div>
+        <div class="footer">Website developed by Yury Vazhenin and Timofey Avetisov</div>
     </body>
 </html>

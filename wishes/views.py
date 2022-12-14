@@ -24,6 +24,10 @@ class PresentUpdateView (UpdateView):
     model = Present
     fields = ["reserved"]
 
+    def form_valid(self, form):
+        form.instance.reserver = self.request.user.id
+        return super().form_valid(form)
+
 class PresentCreateView (LoginRequiredMixin, CreateView):
     model = Present
     fields = ["title"]
@@ -55,7 +59,7 @@ def show_wishlist (request, us_id):
         "WL": wishes_by_id,
         "uid" : us_id
     }
-    return render(request, 'wishes/Wl.html', {"wl" : wishes_by_id, "uid" : us_id, "f" : ReserveForm()})
+    return render(request, 'wishes/WL.html', {"wl" : wishes_by_id, "uid" : us_id, "f" : ReserveForm()})
 
 
 
